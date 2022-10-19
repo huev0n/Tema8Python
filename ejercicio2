@@ -1,0 +1,31 @@
+import pickle
+
+class Vehiculo():
+    matricula=""
+    color=""
+    puertas=0
+    precio=0.0
+
+    def __init__(self,matricula,color,puertas,precio):
+        self.matricula = matricula
+        self.color = color
+        self.puertas = puertas
+        self.precio = precio
+
+    def __str__(self):
+        return f"El coche con matricula {self.matricula}," \
+               f"color {self.color} tiene {self.puertas} puertas " \
+               f"y su precio es de {self.precio}"
+
+c1 = Vehiculo("1234ABC","rojo",5,13000)
+print (c1)
+
+f = open('garaje','wb')
+pickle.dump(c1,f)
+f.close()
+
+f = open('garaje','rb')
+c2 = pickle.load(f)
+f.close()
+print("El objeto coche c2-->")
+print(c2)
